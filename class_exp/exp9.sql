@@ -1,41 +1,41 @@
--- CREATE TABLE BANK (bankcode VARCHAR(3) PRIMARY KEY,bankname VARCHAR(50) NOT NULL,headoffice VARCHAR(50),branches INT CHECK (branches > 0));
--- -- describe TABLE BANK;
--- -- drop table BANK;
+CREATE TABLE BANK (bankcode VARCHAR(3) PRIMARY KEY,bankname VARCHAR(50) NOT NULL,headoffice VARCHAR(50),branches INT CHECK (branches > 0));
+-- describe TABLE BANK;
+-- drop table BANK;
 
--- INSERT INTO BANK VALUES ('SBI', 'State Bank of India', 'Mumbai', 72);
--- INSERT INTO BANK VALUES ('HDF', 'HDFC Bank', 'Mumbai', 60);
--- INSERT INTO BANK VALUES ('ICI', 'ICICI Bank', 'Mumbai', 55);
--- INSERT INTO BANK VALUES ('PNB', 'Punjab National Bank', 'New Delhi', 14);
--- INSERT INTO BANK VALUES ('CAN', 'Canara Bank', 'Bangalore', 39);
--- INSERT INTO BANK VALUES ('SIB', 'South Indian Bank', 'Ernakulam', 27);
--- SELECT * FROM BANK; 
+INSERT INTO BANK VALUES ('SBI', 'State Bank of India', 'Mumbai', 72);
+INSERT INTO BANK VALUES ('HDF', 'HDFC Bank', 'Mumbai', 60);
+INSERT INTO BANK VALUES ('ICI', 'ICICI Bank', 'Mumbai', 55);
+INSERT INTO BANK VALUES ('PNB', 'Punjab National Bank', 'New Delhi', 14);
+INSERT INTO BANK VALUES ('CAN', 'Canara Bank', 'Bangalore', 39);
+INSERT INTO BANK VALUES ('SIB', 'South Indian Bank', 'Ernakulam', 27);
+SELECT * FROM BANK; 
 
--- CREATE TABLE BRANCH (branchid INT PRIMARY KEY,branchname VARCHAR(50) DEFAULT 'New Delhi',bankid VARCHAR(3),FOREIGN KEY (bankid) REFERENCES BANK(bankcode));
--- describe TABLE BRANCH;
--- drop table BRANCH;
+CREATE TABLE BRANCH (branchid INT PRIMARY KEY,branchname VARCHAR(50) DEFAULT 'New Delhi',bankid VARCHAR(3),FOREIGN KEY (bankid) REFERENCES BANK(bankcode));
+describe TABLE BRANCH;
+drop table BRANCH;
 
--- INSERT INTO BRANCH VALUES (1, 'Kottayam', 'SBI');
--- INSERT INTO BRANCH VALUES (2, 'Ernakulam', 'HDF');
--- INSERT INTO BRANCH VALUES (3, 'Chennai', 'ICI');
--- INSERT INTO BRANCH VALUES (4, 'New Delhi', 'PNB');
--- INSERT INTO BRANCH VALUES (5, 'Bangalore', 'CAN');
--- INSERT INTO BRANCH (branchid, bankid) VALUES (6, 'SBI');
--- SELECT * FROM BRANCH; 
+INSERT INTO BRANCH VALUES (1, 'Kottayam', 'SBI');
+INSERT INTO BRANCH VALUES (2, 'Ernakulam', 'HDF');
+INSERT INTO BRANCH VALUES (3, 'Chennai', 'ICI');
+INSERT INTO BRANCH VALUES (4, 'New Delhi', 'PNB');
+INSERT INTO BRANCH VALUES (5, 'Bangalore', 'CAN');
+INSERT INTO BRANCH (branchid, bankid) VALUES (6, 'SBI');
+SELECT * FROM BRANCH; 
 
--- CREATE VIEW bank_head_office AS SELECT * FROM BANK WHERE headoffice = 'Mumbai';
--- SELECT * FROM BANK_HEAD_OFFICE;
+CREATE VIEW bank_head_office AS SELECT * FROM BANK WHERE headoffice = 'Mumbai';
+SELECT * FROM BANK_HEAD_OFFICE;
 
--- CREATE VIEW bank_branch AS SELECT B.* FROM BANK B JOIN BRANCH BR ON B.bankcode = BR.bankid WHERE BR.branchname = 'Kottayam';
--- SELECT * FROM BANK_BRANCH;
+CREATE VIEW bank_branch AS SELECT B.* FROM BANK B JOIN BRANCH BR ON B.bankcode = BR.bankid WHERE BR.branchname = 'Kottayam';
+SELECT * FROM BANK_BRANCH;
  
--- CREATE VIEW banks_more_than_50 AS SELECT * FROM BANK WHERE branches > 50;
--- SELECT * FROM BANKS_MORE_THAN_50;
+CREATE VIEW banks_more_than_50 AS SELECT * FROM BANK WHERE branches > 50;
+SELECT * FROM BANKS_MORE_THAN_50;
 
--- CREATE VIEW bank_branch_details AS SELECT B.bankname, BR.branchname FROM BANK B JOIN BRANCH BR ON B.bankcode = BR.bankid;
--- SELECT * FROM BANK_BRANCH_DETAILS;
+CREATE VIEW bank_branch_details AS SELECT B.bankname, BR.branchname FROM BANK B JOIN BRANCH BR ON B.bankcode = BR.bankid;
+SELECT * FROM BANK_BRANCH_DETAILS;
 
--- CREATE VIEW banks_outside_ernakulam AS SELECT * FROM BANK WHERE headoffice <> 'Ernakulam';
--- SELECT * FROM banks_outside_ernakulam;
+CREATE VIEW banks_outside_ernakulam AS SELECT * FROM BANK WHERE headoffice <> 'Ernakulam';
+SELECT * FROM banks_outside_ernakulam;
 
 
 
